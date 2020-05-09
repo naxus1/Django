@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Welcome - Todo List App</title>
+{% endblock title %}
+
+
+{% block content %}
+  <div class="container">
+    <br>
+  <!-- add task -->
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">New task</label>
+      <input type="email" class="form-control"  placeholder="Add task">
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+
+  <br>
+
+  <!-- list Task -->  
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Task</th>
+           <th scope="col">Done</th>
+          <th scope="col">Edit</th>
+           <th scope="col">Dleted</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in all_tasks  %}
+          {% if task.done %}
+            <tr class="table-success">
+              <th scope="row">{{ task.task }}</th>
+              <td>Completed</td>
+              <td>edit</td>
+              <td>deleted</td>
+            </tr> 
+          {% else %}  
+            <tr>
+              <th scope="row">{{ task.task }}</th>
+              <td>No completed</td>
+              <td>edit</td>
+              <td>deleted</td>
+            </tr> 
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+
+</div> 
+{% endblock content %}
