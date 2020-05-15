@@ -8,13 +8,24 @@
 {% block content %}
   <div class="container">
     <br>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+        {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    {% endfor %}
+  {% endif %}
+
   <!-- add task -->
-  <form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">New task</label>
-      <input type="email" class="form-control"  placeholder="Add task">
-    </div>
-    <button type="submit" class="btn btn-primary">Add</button>
+  <form method="POST" class="row">
+    {% csrf_token %}
+      <label class=col-lg-4></label>
+      <input type="text" class="form-control col-lg-6"  name="task" placeholder="Add task">
+      <button type="submit" class="btn btn-primary col-lg-2">Add</button>
   </form>
 
   <br>
@@ -26,29 +37,30 @@
           <th scope="col">Task</th>
            <th scope="col">Done</th>
           <th scope="col">Edit</th>
-           <th scope="col">Dleted</th>
+           <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
-        {% for task in all_tasks  %}
-          {% if task.done %}
-            <tr class="table-success">
-              <th scope="row">{{ task.task }}</th>
-              <td>Completed</td>
-              <td>edit</td>
-              <td>deleted</td>
-            </tr> 
-          {% else %}  
-            <tr>
-              <th scope="row">{{ task.task }}</th>
-              <td>No completed</td>
-              <td>edit</td>
-              <td>deleted</td>
-            </tr> 
-          {% endif %}
-        {% endfor %}
+        {% if all_tasks %}
+          {% for task in all_tasks  %}
+            {% if task.done %}
+              <tr class="table-success">
+                <th scope="row">{{ task.task }}</th>
+                <td>Completed</td>
+                <td>Edit</td>
+                <td> <a href="{% url 'delete_task' task.id %}">Delete</a> </td>
+              </tr> 
+            {% else %}  
+              <tr>
+                <th scope="row">{{ task.task }}</th>
+                <td>No completed</td>
+                <td>edit</td>
+                <td> <a href="{% url 'delete_task' task.id %}">Delete</a> </td>
+              </tr> 
+            {% endif %}
+          {% endfor %}
+        {% endif %}
       </tbody>
     </table>
-
 </div> 
 {% endblock content %}
