@@ -1,0 +1,64 @@
+  .intro {  
+    font-size: 0.9rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-right:2rem;
+  }
+
+  .img-ensalad {
+      padding-top: 2rem;
+      margin-bottom: 1rem;
+  }
+
+  .second-container{
+    background: #e8e8e8;
+  }
+
+  .clases {
+      margin-top: 2rem;
+  }
+
+  .card-header {
+    border-left: 3px solid #28a745 !important;
+    height: 93px !important;
+  }
+
+  .icons {
+    margin-right: 0.5rem;
+  }
+
+  .div-icons {
+      margin-right: 1.4rem;
+  }
+
+  .nom-clase {
+    margin-bottom: 0.3rem;
+    color: black;
+    text-decoration: none;
+  }
+
+  .container-icons {
+    font-size: 13px;
+    margin-left: 0.1rem;
+  }
+
+  .container-row {
+    box-shadow: -1px 11px 23px -5px rgb(183 175 175)
+  }
+
+  .card-body {
+      font-size: 14px !important;
+  }
+
+  .modal-body {
+    font-size: 13px;
+  }
+
+  .intro-text {
+      padding: 0 2rem 0 2rem;
+  }
+
+  a.btn.btn-primary.btn-lg.active
+{
+  width: 100%;
+}
